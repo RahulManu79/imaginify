@@ -1,6 +1,8 @@
-import {  clerkMiddleware } from "@clerk/nextjs/server";
+import { authMiddleware } from '@clerk/nextjs/server'
 
-export default clerkMiddleware();
+export default authMiddleware({
+    ignoredRoutes: ['/api/webhooks/clerk'],
+})
 
 export const config = {
     matcher: [
@@ -9,5 +11,4 @@ export const config = {
         // Always run for API routes
         '/(api|trpc)(.*)',
     ],
-};
-
+}
